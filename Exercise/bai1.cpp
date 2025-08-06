@@ -61,3 +61,16 @@ int main() {
 	cout<<"The Number of ConnectedComponets: \n"<<ConnectedComponet();
     return 0;
 }
+/*
+input 
+10 9
+1 2
+2 3
+2 4
+3 6
+3 7
+6 7
+5 8
+8 9
+10 0
+*/
