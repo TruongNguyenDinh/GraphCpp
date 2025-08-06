@@ -1,0 +1,7 @@
+6 6
+A o o x o o
+o x o o o o
+o x o o o o
+o o o o x x
+B o o o x o
+o o o x x x
