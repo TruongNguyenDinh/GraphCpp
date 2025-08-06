@@ -31,5 +31,3 @@ Tại đồ thị G = (V,E) với:
 V: là số lượng đỉnh. 
 E là số lượng cạnh.
 ```
-
-
