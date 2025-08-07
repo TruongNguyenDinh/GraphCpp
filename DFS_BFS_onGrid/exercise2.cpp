@@ -90,3 +90,13 @@ int main() {
    	Path();
     return 0;
 }
+/*
+input
+6 6
+A o o x o o
+o x o o o o
+o x o o o o
+x x o o x x
+B o o o x o
+o o o x x x
+*/
