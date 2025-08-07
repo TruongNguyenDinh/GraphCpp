@@ -32,7 +32,7 @@ void ConnectedComponent(){
 			}
 		}
 	}
-	cout<<"No exist the cycle !";
+	cout<<"Don't exist the cycle !";
 }
 
 void input(){

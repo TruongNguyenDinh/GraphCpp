@@ -69,7 +69,7 @@ void ConnectedComponent(){
 			}
 		}
 	}
-	cout<<"No exist the cycle! ";
+	cout<<"Don't exist the cycle! ";
 }
 int main() {
     freopen("input.txt","r",stdin);
