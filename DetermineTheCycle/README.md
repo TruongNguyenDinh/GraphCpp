@@ -115,4 +115,21 @@ void ConnectedComponent(){
 }
 ```
 
-## 3.Xác định chu trình trên đồ thì có hướng
+## 3.Xác định chu trình trên đồ thì có hướng bằng DFS
+
+### Mã giả:
+
+```cpp
+bool DFS(int u){
+    color[u] = 1;
+    for(v in range adj[u]){
+        if(color[v] == 0){
+            parent[v] = u;
+            if(DFS(v)) return true;
+        }
+        else if(color[v] == 1) return true; // Tồn tại cạnh ngược (v,u)    
+    }
+    color[u] = 2;
+    return false;
+}
+```
