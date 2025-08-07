@@ -84,7 +84,7 @@ ConnectedComponent(){
 }
 ```
 
-### Cách làm bài toán 2:
+### Cách làm bài toán 2 + bài 3:
 
 |     | 1     | 2   | 3   | 4   | 5   | 6   |
 |:---:|:-----:|:---:|:---:|:---:|:---:|:---:|
@@ -107,13 +107,53 @@ ConnectedComponent(){
 
 Sử dụng thuật toán BFS:
 
+- Bài 2 đơn giản là dùng thuật toán DFS hoặc BFS chạy rồi kiếm tra visited tại vị trí goal xem có được ghé qua chưa ? nếu chưa thì là không có đường đi,còn có thì là đã tồn tại đường đi
+
+- Bài 3 tìm đường đi ngắn nhất thì sử dụng BFS để làm, thêm một trace để truy vết lại cha của tọa độ i j đang xét. mã giả bài 3 bên dưới
+
 #### Mã giả:
 
 ```cpp
 BFS(i,j){
     //Khởi tạo queue q
     q.push({i,j}); // thêm phần tử đầu tiên 
+    //lặp cho đến khi queue rỗng
+    while(!q.empty()){
+        pair top = q.front(); // lấy phần tử đầu tiên ra khỏi queue
+        q.pop(); // Xóa nó đi
+        for (i in range(0,5)){ // lặp từ 0 đến 4 để tìm đường đi
+            i1 = top.first + dx[k];
+            j1 = top.second + dy[k];// tìm bốn hướng xuất phát từ i và j
+            if(1 <= i1 <= n && 1 <= j1 <= m && a[i1][j1] != 'x' && !visited[i1][j1]){
+                trace[i1][j1] = {top.first,top.second} ;// lưu vết 
+                visited[i1][j1] = true; //  đánh dấu đã ghé qua
+                if(a[i1][j1]== 'B') return ; //Dừng nếu đến đích
+                q.push({i1,j1});
+            }
+        }
+    }
+}
+Path{ // in đường đi và số bước ngắn nhất 
+    BFS(start_x,start_y);
+    if(!visited[goal_x][goal_y]) cout >>"No Path";
+    else{
+        //tạo vector lưu đường đi, vì đường đi gồm x và y nên dùng pair
+        vector<pair<int,int>> path;
+        //Tạo biến tạm thời lưu đường đi
+        int u = goal_x; int v = goal_y;
+        while(u != start_y || v != start_y){
+            path.push_back({u,v});//Thêm vào đường đi
+            tie(u,v) = trace[u][v;]
+        } 
+        path.push_back({start_x,start_y});// thêm điểm xuất phát vào đường đi
+        reverse(path.begin(),path.end());
+        for each it in path{
+            //in ra tạo độ điểm x và y
+            cout<< it.first << it.second;
+            if(it == *path.rbegin() continue; // nếu là phần tử cuối thì bỏ ->
+            cout<<" -> ";
+        }
+        
+    }
 }
 ```
-
-
