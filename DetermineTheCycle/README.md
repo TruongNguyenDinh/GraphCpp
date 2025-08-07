@@ -121,15 +121,59 @@ void ConnectedComponent(){
 
 ```cpp
 bool DFS(int u){
-    color[u] = 1;
+    color[u] = 1; // Màu xám đánh dấu chưa thăm hết
     for(v in range adj[u]){
-        if(color[v] == 0){
+        if(color[v] == 0){ // Màu trắng đánh dấu chưa thăm
             parent[v] = u;
             if(DFS(v)) return true;
-        }
+        }    
         else if(color[v] == 1) return true; // Tồn tại cạnh ngược (v,u)    
     }
-    color[u] = 2;
+    color[u] = 2; // màu đen đánh dấu đã thăm xong
     return false;
 }
 ```
+
+Giải thích: Việc sử dụng màu để phân biệt giữa 3 trạng thái trong đồ thị có hướng
+
+- Đỉnh chưa được duyệt qua mang màu trắng ( color = 0 <span style:"color:white>Màu trắng </span>) 
+
+- Đỉnh đang được thăm nhưng chưa xong tức là chưa đi hết các nhánh của đỉnh này ( color = 1 <span style="color:gray">Màu xám</span>)
+
+- Đỉnh đã được thăm xong sẽ là màu đen (color = 2)
+
+**Lí do** : Bởi vì một đỉnh đang mang màu xám tức là nó đang nằm trong stack ( ngăn xếp ) mà sau đó một đỉnh khác khi duyệt lại gặp lại đính màu xám, tức là nó gặp lại tổ tiên của mình thì sẽ được coi là chu trình.
+
+## 4.Xác định chu trình trên đồ thị có hướng bằng thuật toán BFS ( Kahn's algo)
+
+### Mã giả:
+
+```cpp
+bool BFS(int u){
+    //Khởi tạo queue q
+    queue<int> q;
+    for(int i = 1;i<=n;i++){ // duyệt các đỉnh
+        if(degree[i]==0){ // kiểm tra xem đỉnh nào có bán bậc vào bằng không
+            q.push(i); // có thì đẩy vào queue
+        }    
+    }
+    int cnt = 0;
+    while(!q.empty()){
+        int v = q.front();q.pop();
+        ++cnt;
+       for(auto x: adj[v]){
+           degree[x]--; // giảm số bán bậc vào của các đỉnh kề với đỉnh v
+           if(degree[x]==0){
+               q.push(x); 
+            }
+        }
+    }
+    return cnt == n; 
+}
+```
+
+Giải thích:
+
+Sử dụng thuật toán Kahn trong BFS ( hay gọi là thuật toán nhấc đỉnh ) để xác định các đỉnh được tìm thấy . Biến **Cnt** được dùng để kiếm tra nếu **cnt**  bằng số đỉnh thì đồ thị không có chu kì còn ngược lại thì có, vì  thuật toán Kahn nó sẽ không đẩy được các đỉnh vào trong hàng đợi khi nó gặp chu trình.
+
+
