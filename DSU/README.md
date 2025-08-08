@@ -99,7 +99,7 @@ int find(int v){
 
 Độ phức tạp : `O(n)` vì nó cần gọi lần lượt các đỉnh parent của nó để truy ra được đại diện.
 
-Phương pháp tối ưu ( Paht compression : nén đường)
+Phương pháp tối ưu ( Path compression : nén đường)
 
 ```cpp
 int find(int v){
@@ -117,5 +117,6 @@ Cây gốc
 Cây sau khi nén đường bằng `find` 
 
 <img title="" src="https://github.com/TruongNguyenDinh/GraphCpp/blob/main/DSU/graph (1).png?msec=1754634165514" alt="Cây sau khi nén" data-align="center" width="401">
+
 
 
