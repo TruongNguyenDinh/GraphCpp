@@ -117,6 +117,3 @@ Cây gốc
 Cây sau khi nén đường bằng `find` 
 
 <img title="" src="https://github.com/TruongNguyenDinh/GraphCpp/blob/main/DSU/graph (1).png?msec=1754634165514" alt="Cây sau khi nén" data-align="center" width="401">
-
-
-
