@@ -38,7 +38,7 @@ Kruskal(){
 
 Có đồ thị như sau:
 
-<img title="" src="file:///E:/GraphCpp/GraphCpp/DSU/Kruskal/graph%20(4).png" alt="Đồ thị" data-align="center" width="365">
+<img title="" src="https://github.com/TruongNguyenDinh/GraphCpp/blob/main/DSU/Kruskal/graph%20(4).png" alt="Đồ thị" data-align="center" width="365">
 
 Đầu tiên sort các cạnh có độ dài tăng dần:
 
@@ -81,3 +81,4 @@ struct edge{
 | Don't Run | (1,2) | 12     |       |             |          |        |
 
 Trong đó `1 | 1 -> 2 tức là 1 có parent là 1 chuyển sang thành 2`
+
