@@ -15,7 +15,7 @@ bool BFS(int u){
 	}
 	while(!q.empty()){
 		int v = q.front();q.pop();
-		cout<<v<<" ";
+		cout<<v<<" ";		
 		cnt++;
 		for(int x: adj[v]){
 			in_degree[x]--;
