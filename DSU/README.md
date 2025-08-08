@@ -48,7 +48,7 @@ void union(a,b){
 
 Giả sử ta có đồ thị sau:
 
-<img title="" src="file:///E:/GraphCpp/GraphCpp/DSU/graph%20(2).png" alt="Đồ thị ban đầu" data-align="center" width="415">
+<img title="" src="https://github.com/TruongNguyenDinh/GraphCpp/blob/main/DSU/graph%20(2).png" alt="Đồ thị ban đầu" data-align="center" width="415">
 
 Khi gọi hàm `union(2,6)` thì ta sẽ có được:
 
@@ -56,7 +56,7 @@ Khi gọi hàm `union(2,6)` thì ta sẽ có được:
 
 - `find(6)=6`
 
-Ta thấy `1 !=6` nên ta sẽ được `parent[6] = 1` <img title="" src="file:///E:/GraphCpp/GraphCpp/DSU/graph (3).png?msec=1754634165514" alt="Đồ thị sau khi union" data-align="center" width="454">
+Ta thấy `1 !=6` nên ta sẽ được `parent[6] = 1` <img title="" src="https://github.com/TruongNguyenDinh/GraphCpp/blob/main/DSU/graph%20(3).png?msec=1754634165514" alt="Đồ thị sau khi union" data-align="center" width="454">
 
 Lưu ý là : nên chọn đại diện của tập hợp ( cây) có nhiều phần tử hơn làm đại diện của tập hơn gộp để tối ưu hơn. Như trường hợp trên `size(1) = 4 > size(6) = 3` nên chọn `cây 1` làm đại diện.
 
@@ -99,7 +99,7 @@ int find(int v){
 
 Độ phức tạp : `O(n)` vì nó cần gọi lần lượt các đỉnh parent của nó để truy ra được đại diện.
 
-Phương pháp tối ưu ( Paht compression : nén đường)
+Phương pháp tối ưu ( Path compression : nén đường)
 
 ```cpp
 int find(int v){
@@ -112,8 +112,11 @@ Phương pháp này sẽ giúp các node con có chung một đại diện thay 
 
 Cây gốc
 
-<img title="" src="file:///E:/GraphCpp/GraphCpp/DSU/graph.png" alt="Cây trước khi nén" data-align="center" width="357">
+<img title="" src="https://github.com/TruongNguyenDinh/GraphCpp/blob/main/DSU/graph.png" alt="Cây trước khi nén" data-align="center" width="357">
 
 Cây sau khi nén đường bằng `find` 
 
-<img title="" src="file:///E:/GraphCpp/GraphCpp/DSU/graph (1).png?msec=1754634165514" alt="Cây sau khi nén" data-align="center" width="401">
+<img title="" src="https://github.com/TruongNguyenDinh/GraphCpp/blob/main/DSU/graph (1).png?msec=1754634165514" alt="Cây sau khi nén" data-align="center" width="401">
+
+
+
