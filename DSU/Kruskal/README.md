@@ -81,4 +81,3 @@ struct edge{
 | Don't Run | (1,2) | 12     |       |             |          |        |
 
 Trong đó `1 | 1 -> 2 tức là 1 có parent là 1 chuyển sang thành 2`
-
