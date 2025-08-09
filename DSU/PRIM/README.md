@@ -85,6 +85,72 @@ void input(){
 }
 ```
 
+### Mã tham khảo 2
+
+Sử dụng hàng đợi ưu tiên
+
+```cpp
+struct edge{
+    int u,v,w;
+    edge(int _u,int _v, int _w){
+        u = _u;
+        v = _v;
+        w = _w;
+    }
+};
+int n,m;
+int parent[1001];
+vector<pair<int,int>> adj[1001];
+vector<edge> MST;
+int em[1001];
+int res = 0;
+bool used[1001];
+void input(){
+    cin>>n>>m;
+    for(int i = 1;i<=m;i++){
+        int u,v,w;cin>>u>>v>>w;
+        adj[u].push_back({v,w});
+        adj[v].push_back({u,w});
+        parent[u] = v;
+        parent[v] = u;
+    }
+    // Mục đích để lưu trọng số nhỏ nhất tại đỉnh i
+    for(int i =1;i<=n;i++){
+        em[i] = INT_MAX;
+    }  
+    memset(used,false,sizeof(used)); 
+}
+void prim(int s){
+    //Đảo ngược thứ tự lưu của hàng đợi ưu tiên
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
+    q.push({0,s});// Đẩy đỉnh đầu duyệt vào với trọng số bằng 0
+    while(!q.empty()){
+        auto top = q.top(); q.pop();
+        int u = top.second; // Đỉnh cần duyệt
+        int w = top.first; // Trọng số
+        if(used[u]) continue; // Bỏ qua nếu đỉnh đó đã được duyệt
+        used[u] = true; // Đánh dấu đã được duyệt (V_MST)
+        res += w; // Tăng trọng số
+        if(s != u) { // Đẩy khác đỉnh ban đầu vào MST 
+            MST.push_back({u,parent[u],w});
+        }
+        for(auto it : adj[u]){ // duyệt danh sách kề
+            int v= it.first; // đỉnh kề
+            int length = it.second; // trọng số hay chiều dài
+            if(!used[v] && length < em[v]){ // nếu đỉnh chưa duyệt và trọng số nhỏ hơn trọng số của đỉnh 
+                q.push({length,v}); // đẩy vào hàng đợi ưu tiên
+                em[v] = length; // Mục đích là tìm ra trọng số nhỏ nhất tại đỉnh
+                parent[v] = u; // 
+            }
+        }
+    }
+    cout<<res<<endl;
+    for(auto x: MST){
+        cout<<x.u<<" "<<x.v;
+    }  
+}
+```
+
 
 
 
